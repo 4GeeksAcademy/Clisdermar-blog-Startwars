@@ -1,0 +1,18 @@
+.carrusel {
+    overflow-x: scroll;
+    display: flex;
+    
+}
+.card-body p {
+    margin-top: 0; /* Eliminar margen superior */
+    margin-bottom: 0; /* Eliminar margen inferior */
+}
+.card-img-top{
+    height: 50%;
+}
+.card {
+    height: 400px;
+}
+.container{
+    margin-bottom: -14px
+}

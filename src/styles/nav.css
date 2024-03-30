@@ -1,0 +1,22 @@
+*{
+    text-decoration:none;
+}
+
+.border-gradient{
+    border-image: linear-gradient(45deg,#000000, #797979, #ffffff) 1;
+    border-width: 2px;
+    border-style: solid;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-edit{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+}
