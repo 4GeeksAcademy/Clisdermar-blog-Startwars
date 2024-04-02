@@ -29,21 +29,22 @@ const LearnMore = () => {
 
         <div className="container">
 
-
-            <div className="body" style={{ display: 'flex', justifyContent: 'space-between' }}>
-
-
-
-                <img src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} />
-                {learnMore &&
-                    <div style={{textAlign: 'center', padding: '40px'}}>
-                        <h1>{learnMore.properties.name}</h1>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit volutatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae hjdue ndhu nsbsh ki nsbgtwsk nklspw ngdyej pspjses nhuk njshy.Nysmdujd kzops nb jshhi bsgwu ñapw ndhd bhd, njdkieue hkwamsndhe dkdkc.bhuiwuoijjdhui bigiuqwdohudjd mhduihie nchud kjduihuedebe hbduhdhbuygc jhbdhudb,jkhbdhuhuijew.Nhbhchchiuwhfi hbdij mncjd jkurbfhh. hfytruei mjlspwo btyudwa klaoi avada kedavra poty, jutrup lo sare, nvcuiop loyatr. Zataop liytr vceml cuiopsl cytresa mcl oairyel ncñange. Ertyu nbmvk olips lo sdaeq dghcb ncmkgu aldkdu sncb lo kjahg usoe tscabf ñsow bgsfw fadwrw uytrdk oliu yt poln bcdaew.</p>
-                    </div>
-
-                }
-            </div>
-            
+                <div className="body ">
+                                <div className="row">
+                                    <div className="col-12 col-md-6 ">
+                                        <img src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} className="w-90 img-thumbnail h-100px"  />
+                                    </div>
+                                    <div className="col-12 col-md-6 ">
+                                        {learnMore &&
+                                            <div style={{ textAlign: 'center', padding: '40px' }}>
+                                                <h1>{learnMore.properties.name}</h1>
+                                                <p>{learnMore.description}</p>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            
             <div className="footer" style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', }}>
                 {learnMore &&
                  
