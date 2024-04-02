@@ -1,3 +1,22 @@
+const BASE_URL = 'https://www.swapi.tech/api'; // URL base centralizada
+
+async function obtenerDatos(puntoFinal) {
+    try {
+        const respuesta = await fetch(`${BASE_URL}/${puntoFinal}`);
+        const datos = await respuesta.json();
+
+        const detalles = await Promise.all(datos.results.map(async (elemento) => {
+            const respuestaDetalle = await fetch(elemento.url);
+            const datosDetalle = await respuestaDetalle.json();
+            return datosDetalle.result;
+        }));
+
+        return detalles;
+    } catch (error) {
+        console.error(`Error al obtener datos de ${puntoFinal}:`, error);
+    }
+}
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -46,38 +65,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getCharacters: async () => {
-				fetch('https://www.swapi.tech/api/people')
-					.then((response) => response.json())
-					.then((data) => {
-						for (let item of data.results) {
-							fetch(item.url) //para obtener el detalle de cada personaje uso la url
-								.then((response) => response.json())
-								.then((data) => {
-									console.log(getStore()) //para depurar y obtener los datos actual de Store,
-									console.log(data) // para registrar los datos de los personajes al detalle y poder imprimir en consola
-									setStore({ characters: [...getStore().characters, data.result] }) 
-								}).catch((err) => { console.log(err) })
-						}
+                const personajes = await obtenerDatos('people');
+                setStore({ characters: personajes });
+            },
 
-					})
-			},
-
-			getPlanets: async () => {
-				fetch('https://www.swapi.tech/api/planets')
-					.then((response) => response.json())
-					.then((data) => {
-						for (let item of data.results) {
-							fetch(item.url)
-								.then((response) => response.json())
-								.then((data) => {
-									console.log(getStore())
-									console.log(data)
-									setStore({ planets: [...getStore().planets, data.result] })
-								}).catch((err) => { console.log(err) })
-						}
-
-					})
-			},
+            getPlanets: async () => {
+                const planetas = await obtenerDatos('planets');
+                setStore({ planets: planetas });
+            },
+			
 			addFavorite: (item) => {
 				console.log(item)
 
